@@ -185,7 +185,7 @@ public extension UIColor {
 public extension Array {
     /// SwiftRandom extension
     public func randomItem() -> Element? {
-        guard self.count > 0 else {
+        guard !self.isEmpty else {
             return nil
         }
         
@@ -197,7 +197,7 @@ public extension Array {
 public extension ArraySlice {
     /// SwiftRandom extension
     public func randomItem() -> Element? {
-        guard self.count > 0 else {
+        guard !self.isEmpty else {
             return nil
         }
         
@@ -307,12 +307,30 @@ public struct Randoms {
     }
     
     public static func randomFakeConversation() -> String {
-        let convoList = ["You embarrassed me this evening.", "You don't think that was just lemonade in your glass, do you?", "Do you ever think we should just stop doing this?", "Why didn't he come and talk to me himself?", "Promise me you'll look after your mother.", "If you get me his phone, I might reconsider.", "I think the room is bugged.", "No! I'm tired of doing what you say.", "For some reason, I'm attracted to you."]
+        let convoList = ["You embarrassed me this evening.",
+                         "You don't think that was just lemonade in your glass, do you?",
+                         "Do you ever think we should just stop doing this?",
+                         "Why didn't he come and talk to me himself?",
+                         "Promise me you'll look after your mother.",
+                         "If you get me his phone, I might reconsider.",
+                         "I think the room is bugged.",
+                         "No! I'm tired of doing what you say.",
+                         "For some reason, I'm attracted to you."]
         return convoList.randomItem()!
     }
     
     public static func randomFakeTitle() -> String {
-        let titleList = ["CEO of Google", "CEO of Facebook", "VP of Marketing @Uber", "Business Developer at IBM", "Jungler @ Fanatic", "B2 Pilot @ USAF", "Student at Stanford", "Student at Harvard", "Mayor of Raccoon City", "CTO @ Umbrella Corporation", "Professor at Pallet Town University"]
+        let titleList = ["CEO of Google",
+                         "CEO of Facebook",
+                         "VP of Marketing @Uber",
+                         "Business Developer at IBM",
+                         "Jungler @ Fanatic",
+                         "B2 Pilot @ USAF",
+                         "Student at Stanford",
+                         "Student at Harvard",
+                         "Mayor of Raccoon City",
+                         "CTO @ Umbrella Corporation",
+                         "Professor at Pallet Town University"]
         return titleList.randomItem()!
     }
     
@@ -334,23 +352,25 @@ public struct Randoms {
     
     public static func randomFakeCity() -> String {
         let cityPrefixes = ["North", "East", "West", "South", "New", "Lake", "Port"]
-        let citySuffixes = ["town", "ton", "land", "ville", "berg", "burgh", "borough", "bury", "view", "port", "mouth", "stad", "furt", "chester", "mouth", "fort", "haven", "side", "shire"]
+        let citySuffixes = ["town", "ton", "land", "ville", "berg", "burgh", "borough", "bury", "view", "port",
+                            "mouth", "stad", "furt", "chester", "mouth", "fort", "haven", "side", "shire"]
         return cityPrefixes.randomItem()! + citySuffixes.randomItem()!
     }
     
     public static func randomCurrency() -> String {
-        let currencyList = ["USD", "EUR", "GBP", "JPY", "AUD", "CAD", "ZAR", "NZD", "INR", "BRP", "CNY", "EGP", "KRW", "MXN", "SAR", "SGD",]
+        let currencyList = ["USD", "EUR", "GBP", "JPY", "AUD", "CAD", "ZAR", "NZD", "INR", "BRP", "CNY",
+                            "EGP", "KRW", "MXN", "SAR", "SGD",]
         
         return currencyList.randomItem()!
     }
     
     public enum GravatarStyle: String {
-        case Standard
-        case MM
-        case Identicon
-        case MonsterID
-        case Wavatar
-        case Retro
+        case standard
+        case mm
+        case identicon
+        case monsterID
+        case wavatar
+        case retro
         
         static let allValues = [Standard, MM, Identicon, MonsterID, Wavatar, Retro]
     }

@@ -13,7 +13,7 @@ internal extension UITextView {
     typealias Match = (prefix: String, word: String, range: NSRange)
     
     func find(prefixes: Set<String>, with delimiterSet: CharacterSet) -> Match? {
-        guard prefixes.count > 0 else { return nil }
+        guard !prefixes.isEmpty else { return nil }
 
         for prefix in prefixes {
             if let match = find(prefix: prefix, with: delimiterSet) {
