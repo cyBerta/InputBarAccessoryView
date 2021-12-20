@@ -75,7 +75,9 @@ class CommonTableViewController: UIViewController, UITableViewDataSource, UITabl
         inputBar.inputTextView.keyboardType = .twitter
  
         // Configure AutocompleteManager
-        autocompleteManager.register(prefix: "@", with: [.font: UIFont.preferredFont(forTextStyle: .body),.foregroundColor: UIColor(red: 0, green: 122/255, blue: 1, alpha: 1),.backgroundColor: UIColor(red: 0, green: 122/255, blue: 1, alpha: 0.1)])
+        autocompleteManager.register(prefix: "@", with: [.font: UIFont.preferredFont(forTextStyle: .body),
+                                                         .foregroundColor: UIColor(red: 0, green: 122/255, blue: 1, alpha: 1),
+                                                         .backgroundColor: UIColor(red: 0, green: 122/255, blue: 1, alpha: 0.1)])
         autocompleteManager.register(prefix: "#")
         autocompleteManager.maxSpaceCountDuringCompletion = 1 // Allow for autocompletes with a space
         
@@ -199,15 +201,15 @@ extension CommonTableViewController: AttachmentManagerDelegate {
     }
     
     func attachmentManager(_ manager: AttachmentManager, didReloadTo attachments: [AttachmentManager.Attachment]) {
-        inputBar.sendButton.isEnabled = manager.attachments.count > 0
+        inputBar.sendButton.isEnabled = !manager.attachments.isEmpty
     }
     
     func attachmentManager(_ manager: AttachmentManager, didInsert attachment: AttachmentManager.Attachment, at index: Int) {
-        inputBar.sendButton.isEnabled = manager.attachments.count > 0
+        inputBar.sendButton.isEnabled = !manager.attachments.isEmpty
     }
     
     func attachmentManager(_ manager: AttachmentManager, didRemove attachment: AttachmentManager.Attachment, at index: Int) {
-        inputBar.sendButton.isEnabled = manager.attachments.count > 0
+        inputBar.sendButton.isEnabled = !manager.attachments.isEmpty
     }
     
     func attachmentManager(_ manager: AttachmentManager, didSelectAddAttachmentAt index: Int) {
