@@ -82,7 +82,7 @@ open class AttachmentManager: NSObject, InputPlugin {
     open func reloadData() {
         attachmentView.reloadData()
         delegate?.attachmentManager(self, didReloadTo: attachments)
-        delegate?.attachmentManager(self, shouldBecomeVisible: attachments.count > 0 || isPersistent)
+        delegate?.attachmentManager(self, shouldBecomeVisible: !attachments.isEmpty || isPersistent)
     }
     
     /// Invalidates the `AttachmentManagers` session by removing all attachments
@@ -123,7 +123,7 @@ open class AttachmentManager: NSObject, InputPlugin {
         }, completion: { success in
             self.attachmentView.reloadData()
             self.delegate?.attachmentManager(self, didInsert: attachment, at: index)
-            self.delegate?.attachmentManager(self, shouldBecomeVisible: self.attachments.count > 0 || self.isPersistent)
+            self.delegate?.attachmentManager(self, shouldBecomeVisible: !self.attachments.isEmpty || self.isPersistent)
         })
     }
     
@@ -139,7 +139,7 @@ open class AttachmentManager: NSObject, InputPlugin {
         }, completion: { success in
             self.attachmentView.reloadData()
             self.delegate?.attachmentManager(self, didRemove: attachment, at: index)
-            self.delegate?.attachmentManager(self, shouldBecomeVisible: self.attachments.count > 0 || self.isPersistent)
+            self.delegate?.attachmentManager(self, shouldBecomeVisible: !self.attachments.isEmpty || self.isPersistent)
         })
     }
     
@@ -152,7 +152,7 @@ extension AttachmentManager: UICollectionViewDataSource, UICollectionViewDelegat
     final public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == attachments.count {
             delegate?.attachmentManager(self, didSelectAddAttachmentAt: indexPath.row)
-            delegate?.attachmentManager(self, shouldBecomeVisible: attachments.count > 0 || isPersistent)
+            delegate?.attachmentManager(self, shouldBecomeVisible: !attachments.isEmpty || isPersistent)
         }
     }
     

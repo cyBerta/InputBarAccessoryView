@@ -213,15 +213,15 @@ extension CommonTableViewController: AttachmentManagerDelegate {
     }
     
     func attachmentManager(_ manager: AttachmentManager, didReloadTo attachments: [AttachmentManager.Attachment]) {
-        inputBar.sendButton.isEnabled = manager.attachments.count > 0
+        inputBar.sendButton.isEnabled = !manager.attachments.isEmpty
     }
     
     func attachmentManager(_ manager: AttachmentManager, didInsert attachment: AttachmentManager.Attachment, at index: Int) {
-        inputBar.sendButton.isEnabled = manager.attachments.count > 0
+        inputBar.sendButton.isEnabled = !manager.attachments.isEmpty
     }
     
     func attachmentManager(_ manager: AttachmentManager, didRemove attachment: AttachmentManager.Attachment, at index: Int) {
-        inputBar.sendButton.isEnabled = manager.attachments.count > 0
+        inputBar.sendButton.isEnabled = !manager.attachments.isEmpty
     }
     
     func attachmentManager(_ manager: AttachmentManager, didSelectAddAttachmentAt index: Int) {

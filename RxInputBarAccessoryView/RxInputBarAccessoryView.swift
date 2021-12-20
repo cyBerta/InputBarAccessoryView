@@ -90,7 +90,7 @@ InputBarAccessoryViewDelegate {
 }
 
 extension InputBarAccessoryView {
-    public var rx_delegate: RxInputBarAccessoryViewDelegate {
+    var rxDelegate: RxInputBarAccessoryViewDelegate {
         return RxInputBarAccessoryViewDelegate.proxy(for: self)
     }
 }

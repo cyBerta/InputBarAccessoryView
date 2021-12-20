@@ -9,7 +9,7 @@
 import UIKit
 import InputBarAccessoryView
 
-final class iMessageInputBar: InputBarAccessoryView {
+final class IMessageInputBar: InputBarAccessoryView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

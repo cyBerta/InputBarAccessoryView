@@ -180,7 +180,7 @@ class Lorem {
         if maxNbChars < 5 {
             return ""
         } else if maxNbChars < 25 {
-            while result.count == 0 {
+            while result.isEmpty {
                 var size = 0
                 
                 while size < maxNbChars {
@@ -192,7 +192,7 @@ class Lorem {
                 _ = result.popLast()
             }
         } else if maxNbChars < 100 {
-            while result.count == 0 {
+            while result.isEmpty {
                 var size = 0
                 
                 while size < maxNbChars {
@@ -204,7 +204,7 @@ class Lorem {
                 _ = result.popLast()
             }
         } else {
-            while result.count == 0 {
+            while result.isEmpty {
                 var size = 0
                 
                 while size < maxNbChars {
@@ -260,8 +260,8 @@ extension Array {
      - returns: Returns a random element from the array or `nil` if the
      array is empty.
      */
-    func random() -> Element? {
-        return (count > 0) ? self.shuffled()[0] : nil
+    public func random() -> Element? {
+        return (!isEmpty) ? self.shuffled()[0] : nil
     }
     
     /**
