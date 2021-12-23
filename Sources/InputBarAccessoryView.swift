@@ -401,6 +401,7 @@ open class InputBarAccessoryView: UIView {
         setupConstraints()
         setupObservers()
         setupGestureRecognizers()
+        setupKeyboardEvents()
     }
 
     private func setupKeyboardEvents() {
