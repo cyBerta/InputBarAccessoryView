@@ -341,6 +341,9 @@ open class InputBarAccessoryView: UIView {
         return [leftStackViewItems, rightStackViewItems, bottomStackViewItems, topStackViewItems, nonStackViewItems].flatMap { $0 }
     }
 
+    private let keyboardManager: KeyboardManager = KeyboardManager()
+    open var keyboardHeight: CGFloat = 0
+
     // MARK: - Auto-Layout Constraint Sets
     
     private var middleContentViewLayoutSet: NSLayoutConstraintSet?
@@ -399,6 +402,18 @@ open class InputBarAccessoryView: UIView {
         setupObservers()
         setupGestureRecognizers()
     }
+
+    private func setupKeyboardEvents() {
+        keyboardManager.on(event: .willChangeFrame, do: {  [weak self] (notification) in
+            guard let self = self else { return }
+            self.keyboardHeight = notification.endFrame.height - self.intrinsicContentSize.height
+        }).on(event: .didChangeFrame, do: {  [weak self] (notification) in
+            guard let self = self else { return }
+            self.keyboardHeight = notification.endFrame.height - self.intrinsicContentSize.height
+            logger.debug("HEIGHTS: \(notification.endFrame.height) - \(self.intrinsicContentSize.height) >> \(notification.endFrame.height - self.intrinsicContentSize.height)")
+        })
+    }
+
     
     /// Adds the required notification observers
     private func setupObservers() {
